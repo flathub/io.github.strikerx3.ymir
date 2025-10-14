@@ -26,8 +26,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/USCiLab/cereal.git
-        tag: v1.3.2
-        commit: ebef1e929807629befafbb2918ea1a08c7194554
+        commit: a56bad8bbb770ee266e930c95d37fff2a5be7fea
   - name: cxxopts
     buildsystem: cmake
     build-options:
