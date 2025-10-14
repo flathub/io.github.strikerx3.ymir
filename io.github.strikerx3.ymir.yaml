@@ -19,6 +19,8 @@ modules:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
     config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
       - -D SKIP_PERFORMANCE_COMPARISON=ON
       - -D SKIP_PORTABILITY_TEST=ON
     sources:
@@ -55,6 +57,9 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
     sources:
       - type: git
         url: https://github.com/thestk/rtmidi.git
@@ -73,6 +78,9 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
     sources:
       - type: git
         url: https://github.com/marzer/tomlplusplus.git
@@ -84,6 +92,9 @@ modules:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
     builddir: true
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
     sources:
       - type: git
         url: https://github.com/catchorg/Catch2.git
