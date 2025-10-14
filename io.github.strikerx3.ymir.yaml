@@ -3,7 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm20
+  - org.freedesktop.Sdk.Extension.llvm21
 command: ymir-sdl3
 rename-icon: ymir
 finish-args:
@@ -13,15 +13,145 @@ finish-args:
   - --socket=x11
   - --device=all
 modules:
+  - name: cereal
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D SKIP_PERFORMANCE_COMPARISON=ON
+      - -D SKIP_PORTABILITY_TEST=ON
+    sources:
+      - type: git
+        url: https://github.com/USCiLab/cereal.git
+        tag: v1.3.2
+        commit: ebef1e929807629befafbb2918ea1a08c7194554
+  - name: cxxopts
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    sources:
+      - type: git
+        url: https://github.com/jarro2783/cxxopts.git
+        tag: v3.3.1
+        commit: 44380e5a44706ab7347f400698c703eb2a196202
+  - name: date
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
+      - -D ENABLE_DATE_TESTING=ON
+      - -D BUILD_TZ_LIB=ON
+    sources:
+      - type: git
+        url: https://github.com/HowardHinnant/date.git
+        commit: a5db3aecec580bc78b6c01c118f2628676769b69
+  - name: rtmidi
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    sources:
+      - type: git
+        url: https://github.com/thestk/rtmidi.git
+        tag: 6.0.0
+        commit: 1e5b49925aa60065db52de44c366d446a902547b
+  - name: stb
+    buildsystem: cmake
+    sources:
+      - type: git
+        url: https://github.com/Citrodata/stb-cmake.git
+        commit: 489e513486c7ad8e84b77e8c34fcc56d81080ebf
+    post-install:
+      - install -Dm644 ${FLATPAK_DEST}/include/stb/*.h ${FLATPAK_DEST}/include/
+  - name: tomlplusplus
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    sources:
+      - type: git
+        url: https://github.com/marzer/tomlplusplus.git
+        tag: v3.4.0
+        commit: 30172438cee64926dc41fdd9c11fb3ba5b2ba9de
+  - name: Catch2
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    builddir: true
+    sources:
+      - type: git
+        url: https://github.com/catchorg/Catch2.git
+        tag: v3.11.0
+        commit: b3fb4b9feafcd8d91c5cb510a4775143fdbef02f
+  - name: curl
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D BUILD_SHARED_LIBS=OFF
+      - -D CMAKE_BUILD_TYPE=Release
+    sources:
+      - type: git
+        url: https://github.com/curl/curl.git
+        tag: curl-8_16_0
+        commit: 11b991232fbcaa88e2b1faecac224416b0001e35
+  - name: semver
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    sources:
+      - type: git
+        url: https://github.com/Neargye/semver.git
+        tag: v1.0.0-rc
+        commit: ccbbfdf2f862a48498d37d5955743a5082ee49bf
+  - name: json
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    sources:
+      - type: git
+        url: https://github.com/nlohmann/json.git
+        tag: v3.12.0
+        commit: 55f93686c01528224f448c19128836e7df245f72
+  - name: ngtcp2
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    sources:
+      - type: git
+        url: https://github.com/ngtcp2/ngtcp2.git
+        tag: v1.16.0
+        commit: 570771692c2db0601bafdd31f7f588ca626fa92d
+  - name: nghttp3
+    buildsystem: cmake
+    build-options:
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    sources:
+      - type: git
+        url: https://github.com/ngtcp2/nghttp3.git
+        tag: v1.12.0
+        commit: 8e3523d04bec12cc1fbfd6018d2dc0ef4210148d
   - name: ymir
     buildsystem: cmake-ninja
     build-options:
-      append-path: /usr/lib/sdk/llvm20/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
     config-opts:
       - -D CMAKE_C_COMPILER=clang
       - -D CMAKE_CXX_COMPILER=clang++
       - -D Ymir_EXTRA_INLINING=ON
+      - -D Ymir_ENABLE_SANDBOX=OFF
       - -D Ymir_ENABLE_DEVLOG=OFF
       - -D Ymir_ENABLE_IMGUI_DEMO=OFF
       - -D Ymir_DEV_BUILD=OFF
@@ -29,18 +159,32 @@ modules:
       - desktop-file-edit apps/ymir-sdl3/res/io.github.strikerx3.ymir.desktop --set-key=Exec --set-value="ymir-sdl3 --user"
       - install -Dm644 apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml ${FLATPAK_DEST}/share/metainfo/io.github.strikerx3.ymir.metainfo.xml
       - install -Dm644 apps/ymir-sdl3/res/io.github.strikerx3.ymir.desktop -t ${FLATPAK_DEST}/share/applications
-      - install -Dm644 apps/ymir-sdl3/res/ymir.png -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps
+      - install -Dm644 apps/ymir-sdl3/res/ymir.png -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps
     cleanup:
-      - /lib
+      - /lib/cmake
+      - /lib/pkgconfig
+      - /lib/debug
+      - /include
+      - /bin/curl-config
+      - /bin/wcurl
+      - /bin/curl
+      - /share/Catch2
+      - /share/tomlplusplus
+      - /share/rtmidi
+      - /share/man
     sources:
       - type: git
         url: https://github.com/StrikerX3/Ymir.git
-        tag: v0.1.8
-        commit: 1cfb43fbb293cdd304ea4a6e11acbf3ba984ae97
+        tag: v0.2.0
+        commit: 38ac1cb824f243bafb67493354c452da48a88dd5
         x-checker-data:
           type: json
           url: https://api.github.com/repos/StrikerX3/ymir/releases/latest
           version-query: .tag_name | sub("^v"; "")
           tag-query: .tag_name
           timestamp-query: .published_at
+      - type: patch
+        path: metainfo.patch
+      - type: patch
+        path: std_lib.patch
 

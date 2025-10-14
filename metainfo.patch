@@ -1,0 +1,15 @@
+diff --git a/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml b/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml
+index 5b761f88..3b450630 100644
+--- a/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml
++++ b/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml
+@@ -59,6 +59,10 @@
+     <binary>ymir-sdl3</binary>
+   </provides>
+   <releases>
++		<release version="0.2.0" date="2025-10-12">
++      <description/>
++      <url>https://github.com/StrikerX3/Ymir/releases/tag/v0.2.0</url>
++    </release>
+     <release version="0.1.8" date="2025-09-10">
+       <description/>
+       <url>https://github.com/StrikerX3/Ymir/releases/tag/v0.1.8</url>
