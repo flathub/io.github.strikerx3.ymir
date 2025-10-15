@@ -15,9 +15,6 @@ finish-args:
 modules:
   - name: cereal
     buildsystem: cmake
-    build-options:
-      append-path: /usr/lib/sdk/llvm21/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
     config-opts:
       - -D CMAKE_C_COMPILER=gcc
       - -D CMAKE_CXX_COMPILER=g++
@@ -29,9 +26,6 @@ modules:
         commit: a56bad8bbb770ee266e930c95d37fff2a5be7fea
   - name: cxxopts
     buildsystem: cmake
-    build-options:
-      append-path: /usr/lib/sdk/llvm21/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
     sources:
       - type: git
         url: https://github.com/jarro2783/cxxopts.git
@@ -45,6 +39,7 @@ modules:
     config-opts:
       - -D CMAKE_C_COMPILER=clang
       - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
       - -D ENABLE_DATE_TESTING=ON
       - -D BUILD_TZ_LIB=ON
     sources:
@@ -59,6 +54,7 @@ modules:
     config-opts:
       - -D CMAKE_C_COMPILER=clang
       - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/thestk/rtmidi.git
@@ -80,6 +76,7 @@ modules:
     config-opts:
       - -D CMAKE_C_COMPILER=clang
       - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/marzer/tomlplusplus.git
@@ -94,6 +91,7 @@ modules:
     config-opts:
       - -D CMAKE_C_COMPILER=clang
       - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/catchorg/Catch2.git
@@ -105,8 +103,10 @@ modules:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
     config-opts:
-      - -D BUILD_SHARED_LIBS=OFF
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
       - -D CMAKE_BUILD_TYPE=Release
+      - -D BUILD_SHARED_LIBS=OFF
     sources:
       - type: git
         url: https://github.com/curl/curl.git
@@ -117,6 +117,10 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/Neargye/semver.git
@@ -127,6 +131,10 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/nlohmann/json.git
@@ -137,6 +145,10 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/ngtcp2/ngtcp2.git
@@ -147,6 +159,10 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/llvm21/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
+    config-opts:
+      - -D CMAKE_C_COMPILER=clang
+      - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/ngtcp2/nghttp3.git
@@ -160,8 +176,11 @@ modules:
     config-opts:
       - -D CMAKE_C_COMPILER=clang
       - -D CMAKE_CXX_COMPILER=clang++
+      - -D CMAKE_BUILD_TYPE=Release
       - -D Ymir_EXTRA_INLINING=ON
       - -D Ymir_ENABLE_SANDBOX=OFF
+      - -D Ymir_ENABLE_YMDASM=OFF
+      - -D Ymir_ENABLE_IPO=ON
       - -D Ymir_ENABLE_DEVLOG=OFF
       - -D Ymir_ENABLE_IMGUI_DEMO=OFF
       - -D Ymir_DEV_BUILD=OFF
@@ -197,4 +216,6 @@ modules:
         path: metainfo.patch
       - type: patch
         path: std_lib.patch
+      - type: patch
+        path: fix-settings.patch
 
