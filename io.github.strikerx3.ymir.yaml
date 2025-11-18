@@ -192,7 +192,6 @@ modules:
     cleanup:
       - /lib/cmake
       - /lib/pkgconfig
-      - /lib/debug
       - /include
       - /bin/curl-config
       - /bin/wcurl
