@@ -204,7 +204,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/StrikerX3/Ymir.git
-        tag: v0.2.1
         commit: 6c4609e5deddc0f79cb1a2f1c59c1b35a6f839e7
         x-checker-data:
           type: json
