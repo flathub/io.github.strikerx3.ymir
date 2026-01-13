@@ -1,0 +1,34 @@
+From 4e6500f7f2c590410389c39ec6887468f79a2bd6 Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Tue, 13 Jan 2026 22:09:16 +0300
+Subject: [PATCH] Fix appdata paper cuts
+
+---
+ apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml b/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml
+index 9e334ae..dd993a9 100644
+--- a/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml
++++ b/apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml
+@@ -52,14 +52,16 @@
+     </screenshot>
+   </screenshots>
+   <url type="homepage">https://github.com/StrikerX3/Ymir</url>
++  <url type="bugtracker">https://github.com/StrikerX3/Ymir/issues</url>
++  <url type="vcs-browser">https://github.com/StrikerX3/Ymir</url>
+   <developer id="io.github.strikerx3">
+     <name>StrikerX3</name>
+   </developer>
+   <provides>
+     <binary>ymir-sdl3</binary>
+   </provides>
+   <releases>
+-    <release version="0.2.1" date="2025-XX-XX">
++    <release version="0.2.1" date="2026-01-10">
+       <description/>
+       <url>https://github.com/StrikerX3/Ymir/releases/tag/v0.2.1</url>
+     </release>
+--
+libgit2 1.7.2
+

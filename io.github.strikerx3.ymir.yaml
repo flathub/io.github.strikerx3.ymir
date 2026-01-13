@@ -205,6 +205,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/StrikerX3/Ymir.git
+        tag: v0.2.1
         commit: a20ea6cfb212ff91efedc12c751fb6cf5de65a7b
         x-checker-data:
           type: json
@@ -212,5 +213,5 @@ modules:
           version-query: .tag_name | sub("^v"; "")
           tag-query: .tag_name
           timestamp-query: .published_at
-
-        tag: v0.2.1
+      - type: patch
+        path: fix-appdata.patch
