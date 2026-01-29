@@ -12,6 +12,9 @@ finish-args:
   - --socket=pulseaudio
   - --socket=x11
   - --device=all
+  - --filesystem=host:ro
+  - --filesystem=home
+  #- --filesystem=xdg-run/app/com.discordapp.Discord:ro  # for Discord rich presence
 modules:
   - name: cereal
     buildsystem: cmake
