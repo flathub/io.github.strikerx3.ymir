@@ -12,6 +12,10 @@ finish-args:
   - --socket=pulseaudio
   - --socket=x11
   - --device=all
+  # Grant access to external media (for example, Steam Deck)
+  - --filesystem=/media:ro
+  - --filesystem=/mnt:ro
+  - --filesystem=/run/media:ro
 modules:
   - name: cereal
     buildsystem: cmake
