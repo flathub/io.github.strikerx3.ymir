@@ -183,7 +183,8 @@ modules:
       - -D CMAKE_BUILD_TYPE=Release
     build-commands:
       - mkdir build/cmake/builddir
-      - cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++ -D CMAKE_BUILD_TYPE=Release -B build/cmake/builddir -S build/cmake/
+      - cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++ -D CMAKE_BUILD_TYPE=Release
+        -B build/cmake/builddir -S build/cmake/
       - cmake --build build/cmake/builddir --parallel
       - cmake --install build/cmake/builddir --config Release --prefix=/app/
     sources:
@@ -228,8 +229,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/StrikerX3/Ymir.git
-        tag: v0.3.0
-        commit: 922858ce022f8b6b413f7524a4b91fd73e6c7a88
+        tag: v0.3.1
+        commit: 4bc72936451eac128170beb8e51f30cf900120c1
         x-checker-data:
           type: json
           url: https://api.github.com/repos/StrikerX3/ymir/releases/latest
