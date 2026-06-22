@@ -239,11 +239,14 @@ modules:
       - /share/tomlplusplus
       - /share/rtmidi
       - /share/man
+      - /share/doc
+      - /share/cmake
+      - /include/
     sources:
       - type: git
         url: https://github.com/StrikerX3/Ymir.git
-        tag: v0.3.1
-        commit: 4bc72936451eac128170beb8e51f30cf900120c1
+        tag: v0.3.3
+        commit: 54fead6a0001d3e4b6741a8d095ee8342266c3dc
         x-checker-data:
           type: json
           url: https://api.github.com/repos/StrikerX3/ymir/releases/latest
