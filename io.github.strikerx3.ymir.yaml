@@ -183,7 +183,8 @@ modules:
       - -D CMAKE_BUILD_TYPE=Release
     build-commands:
       - mkdir build/cmake/builddir
-      - cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++ -D CMAKE_BUILD_TYPE=Release -B build/cmake/builddir -S build/cmake/
+      - cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++ -D CMAKE_BUILD_TYPE=Release
+        -B build/cmake/builddir -S build/cmake/
       - cmake --build build/cmake/builddir --parallel
       - cmake --install build/cmake/builddir --config Release --prefix=/app/
     sources:
@@ -223,7 +224,8 @@ modules:
       - -D Ymir_ENABLE_UPDATE_CHECKS=OFF
       - -D Ymir_ENABLE_YMDASM=OFF
     post-install:
-      - desktop-file-edit apps/ymir-sdl3/res/io.github.strikerx3.ymir.desktop --set-key=Exec --set-value="ymir-sdl3 --user"
+      - desktop-file-edit apps/ymir-sdl3/res/io.github.strikerx3.ymir.desktop --set-key=Exec
+        --set-value="ymir-sdl3 --user"
       - install -Dm755 apps/ymir-sdl3/ymir-sdl3 ${FLATPAK_DEST}/bin/ymir-sdl3
       - install -Dm644 apps/ymir-sdl3/res/io.github.strikerx3.ymir.xml ${FLATPAK_DEST}/share/metainfo/io.github.strikerx3.ymir.metainfo.xml
       - install -Dm644 apps/ymir-sdl3/res/io.github.strikerx3.ymir.desktop -t ${FLATPAK_DEST}/share/applications
@@ -242,8 +244,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/StrikerX3/Ymir.git
-        tag: v0.3.1
-        commit: 4bc72936451eac128170beb8e51f30cf900120c1
+        tag: v0.3.3
+        commit: 54fead6a0001d3e4b6741a8d095ee8342266c3dc
         x-checker-data:
           type: json
           url: https://api.github.com/repos/StrikerX3/ymir/releases/latest
