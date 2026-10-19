@@ -128,8 +128,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Neargye/semver.git
-        tag: v1.0.0-rc
-        commit: ccbbfdf2f862a48498d37d5955743a5082ee49bf
+        tag: v1.0.1
+        commit: b8cc461e73a418cb511861c7be7da84eadf4b2b0
   - name: json
     buildsystem: cmake
     build-options:
@@ -245,8 +245,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/StrikerX3/Ymir.git
-        tag: v0.4.0
-        commit: 25cd2c2d2bf994d43872e2b3776cd4cf7912387e
+        tag: v0.4.1
+        commit: d49c0868cf9998d279394498ad0cd0efbd102ccb
         x-checker-data:
           type: json
           url: https://api.github.com/repos/StrikerX3/ymir/releases/latest
